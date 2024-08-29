@@ -1,4 +1,4 @@
-# Lecture 1: Introduction to Robotics
+# Lecture 1.1: Introduction to Robotics - Tuesday, 27/08/2024
 
 Literature:
 -
@@ -65,3 +65,34 @@ Mobile Industrial Robots Odense - Regnar
 
 - Scarlet Knight was a submarine robot that crossed the pacific ocean from New Jersey to Balona, Spain
 
+## Exercises
+
+Task 1: Build a robot that can move to a certain spot and a specific orientation.
+
+
+
+Group 4 / JoMaMa
+
+## Lecture 1.2 - Thursday, 29/08/2024
+
+What you have to worry about when solving the task:
+- Precision
+- Control
+- Model: the model of the world
+  - Precision of measurements
+- Environment: external factors that affect the robot
+- Actuator noise: the actuators are not perfect and will not always do exactly what you tell it to
+- Mechanics of the robot: the robot is not perfect, wheels might compress and affect your model
+  - Actuator type
+  - Play / wiggle room of the mechanics
+- More resolution: how precisely can you control the motor?
+  - Smaller wheels will give you more resolution
+- Power source
+  - Do we give the robot the correct amount of power?
+- Sampling rate
+  - How often can the robot get new instructions?
+- Inertia
+  - How fast can the robot change direction?
+  - Controlled by weight and speed
+
+## Lecture 2.1
