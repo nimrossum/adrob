@@ -95,4 +95,82 @@ What you have to worry about when solving the task:
   - How fast can the robot change direction?
   - Controlled by weight and speed
 
-## Lecture 2.1
+## Lecture 2.1 - Tuesday, 03/09/2024
+
+
+
+## Lecture 2.2 - Thursday, 05/09/2024
+
+### Behavior based control
+
+Classic control: Sense $\rightarrow$ Plan $\rightarrow$ Act
+
+Behavior based control: Perception $\rightarrow$ Response
+
+- We can build a robot by combining simple behaviors
+
+Example: Roomba
+
+Behaviors:
+- Spiraling
+- Wall following
+- Room crossing (ant line, random walk)
+- Dirt detection
+
+Sensors:
+- Cliff sensor (IR) - detects the edge of a cliff
+  - Limitations: Couldn't clean black carpets, as the robot thought it was a cliff
+- Virtual Wall / Home base: Infrared light that the robot can detect to get back to the charging station
+- Wall: Infrared light that the robot can detect to follow the wall
+- Wheel drop sensors: Detects if the robot is stuck or if the wheels are not touching the ground or if the robot is picked up
+  - Very simple and reliable, just a switch
+- Bump: Detects if the robot has bumped into something
+  - Big plastic bumper that pushes in when it hits something
+- Odometry: Encoders on the wheels to measure how far the robot has moved
+- Dirt: Acoustic impact sensor (noise)
+
+### Simple behaviors
+
+Simple is always better
+- Robust
+- Cheap
+- Easy to understand
+- No goal
+- Can be just a few lines of code
+
+Should the robot close its eyes when turning in an intersection?
+- Maybe, to avoid interference from the behaviors
+
+Behaviors are modular
+
+### Behavior coordination
+
+- They cannot all control the robot at the same time
+- Should they compete or cooperate?
+  - Compete: The strongest behavior wins
+  - Cooperate: The behaviors can work together
+
+- A competitive method: Priority based coordination: The behaviors are ordered by priority
+
+- Action-selector coordination: Over time, coordinate which behavior is more important
+
+- Voting based coordination: Each behavior votes on what to do
+  - If most behaviors vote for the same action, that action is taken
+
+- Fusion-based coordination: Fuse the responses
+  - If one behavior says to go left, and another says to go right, the robot goes straight (vector addition)
+
+
+1. Build a minimal robot system
+2. Evaluate the robot
+3. Add new behaviors or adjust
+  - Software, robot design, sensor locations etc.
+4. Evaluate the robot
+5. Repeat
+
+### Complex systems
+
+Kismet example
+
+Social human robot
+
