@@ -174,3 +174,11 @@ Kismet example
 
 Social human robot
 
+## Lecture 3.1 - Tuesday 10/09/2024 - Hierarchical architectures
+
+### Symbolic-based paradigm
+
+Stuck for several decades in the mindset that we only need better sensors, our model is perfect and our robot is perfect and the world is perfect.
+
+Finally led to hybrid systems.
+
