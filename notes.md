@@ -182,3 +182,27 @@ Stuck for several decades in the mindset that we only need better sensors, our m
 
 Finally led to hybrid systems.
 
+## Lecture 3.2 - Thursday 12/09/2024 - Hierarchical architectures
+
+## Lecture 4.1 - Tuesday 17/09/2024 -
+
+Ask these questions when writing the report
+
+- Which assumptions have we done in the design of the robot?
+- Which assumptions are we depending on?
+
+- How are we measuring the performance of the robot?
+- How is it replicated?
+
+- Distance between sensors
+- Photo of the robot
+- Geometry of the robot
+- Technical drawing of the robot
+
+- Does the results obtained give a fair and realistic picture of the system being studied?
+  - How honest are our results?
+
+- Sometimes we have a tendency to do too large conclusions based on too little data
+  - Don't overstate the results
+  - Be careful with the conclusions
+
