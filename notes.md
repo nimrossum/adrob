@@ -99,9 +99,9 @@ What you have to worry about when solving the task:
 
 
 
-## Lecture 2.2 - Thursday, 05/09/2024
+# Lecture 2.2 - Thursday, 05/09/2024
 
-### Behavior based control
+## Behavior based control
 
 Classic control: Sense $\rightarrow$ Plan $\rightarrow$ Act
 
@@ -129,7 +129,7 @@ Sensors:
 - Odometry: Encoders on the wheels to measure how far the robot has moved
 - Dirt: Acoustic impact sensor (noise)
 
-### Simple behaviors
+## Simple behaviors
 
 Simple is always better
 - Robust
@@ -143,7 +143,7 @@ Should the robot close its eyes when turning in an intersection?
 
 Behaviors are modular
 
-### Behavior coordination
+## Behavior coordination
 
 - They cannot all control the robot at the same time
 - Should they compete or cooperate?
@@ -168,23 +168,23 @@ Behaviors are modular
 4. Evaluate the robot
 5. Repeat
 
-### Complex systems
+## Complex systems
 
 Kismet example
 
 Social human robot
 
-## Lecture 3.1 - Tuesday 10/09/2024 - Hierarchical architectures
+# Lecture 3.1 - Tuesday 10/09/2024 - Hierarchical architectures
 
-### Symbolic-based paradigm
+## Symbolic-based paradigm
 
 Stuck for several decades in the mindset that we only need better sensors, our model is perfect and our robot is perfect and the world is perfect.
 
 Finally led to hybrid systems.
 
-## Lecture 3.2 - Thursday 12/09/2024 - Hierarchical architectures
+# Lecture 3.2 - Thursday 12/09/2024 - Hierarchical architectures
 
-## Lecture 4.1 - Tuesday 17/09/2024 -
+# Lecture 4.1 - Tuesday 17/09/2024
 
 Ask these questions when writing the report
 
@@ -205,4 +205,6 @@ Ask these questions when writing the report
 - Sometimes we have a tendency to do too large conclusions based on too little data
   - Don't overstate the results
   - Be careful with the conclusions
+
+# Lecture 5.1 - Tuesday 24/09/2024
 
