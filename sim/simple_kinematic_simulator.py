@@ -21,8 +21,12 @@ simulation_timestep = 0.01  # timestep in kinematics sim (probably don't touch..
 # world = LinearRing([(W / 2, H / 2), (-W / 2, H / 2), (-W / 2, -H / 2), (W / 2, -H / 2)])
 world = [
     LinearRing([(W / 2, H / 2), (-W / 2, H / 2), (-W / 2, -H / 2), (W / 2, -H / 2)]),
-    # Obstacle
+    # Obstacles
     LinearRing([(0.5, 0.5), (0.5, 0.7), (0.7, 0.7), (0.7, 0.5)]),
+    LinearRing([(-0.5, -0.5), (-0.5, -0.7), (-0.7, -0.7), (-0.7, -0.5)]),
+    LinearRing([(-0.5, 0.5), (-0.5, 0.7), (-0.7, 0.7), (-0.7, 0.5)]),
+    LinearRing([(0.5, -0.5), (0.5, -0.7), (0.7, -0.7), (0.7, -0.5)]),
+
 ]
 
 # Variables
@@ -61,6 +65,11 @@ def simulationstep():
 tfile = open("trajectory.dat", "w")
 pfile = open("points.dat", "w")
 
+for w in world:
+    pfile.write(
+        f"{w.coords.xy[0][0]}, {w.coords.xy[1][0]}, {w.coords.xy[0][1]}, {w.coords.xy[1][1]}\n"
+    )
+
 # Measure time it takes to run simulation
 
 start = time.time()
@@ -95,18 +104,20 @@ for cnt in range(5_000):
         )  # a line from robot to a point outside arena in direction of t
         for w in world:
             ls = w.intersection(laser_ray)
+
+            if type(ls) is shapely.geometry.MultiPoint:
+                ls = ls.geoms[0]
+
+            if ls.is_empty:
+                continue
             sqrd_dist = (ls.x - x) ** 2 + (ls.y - y) ** 2  # distance to wall
             if sqrd_dist < min_laser_distance[1]:
                 min_laser_distance = (t + radians, sqrd_dist)
-
     # simple single-ray sensor
 
     ray = LineString(
         [(x, y), (x + cos(t) * 2 * (W + H), (y + sin(t) * 2 * (W + H)))]
     )  # a line from robot to a point outside arena in direction of t
-
-    s = world.intersection(ray)
-    distance = sqrt((s.x - x) ** 2 + (s.y - y) ** 2)  # distance to wall
 
     wall_angle, closest_wall_dist = min_laser_distance
 
@@ -141,7 +152,8 @@ for cnt in range(5_000):
     simulationstep()
 
     # check collision with arena walls
-    if world.distance(Point(x, y)) < wL / 2:
+    if world[0].distance(Point(x, y)) < wL / 2:
+        print("Collision with arena wall!!!")
         break
 
     if cnt % 50 == 0:
