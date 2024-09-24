@@ -7,8 +7,8 @@ from random import random
 
 # Constants
 ###########
-R = 0.02  # radius of wheels in meters
-L = 0.10  # distance between wheels in meters
+wR = 0.02  # radius of wheels in meters
+wL = 0.10  # distance between wheels in meters
 
 W = 2.0  # width of arena
 H = 2.0  # height of arena
@@ -24,7 +24,7 @@ world = LinearRing([(W / 2, H / 2), (-W / 2, H / 2), (-W / 2, -H / 2), (W / 2, -
 
 x = 0.0  # robot position in meters - x direction - positive to the right
 y = 0.0  # robot position in meters - y direction - positive up
-q = 0.0  # robot heading with respect to x-axis in radians
+t = 0.0  # robot heading with respect to x-axis in radians
 
 left_wheel_velocity = random()  # robot left wheel velocity in radians/s
 right_wheel_velocity = random()  # robot right wheel velocity in radians/s
@@ -35,61 +35,67 @@ right_wheel_velocity = random()  # robot right wheel velocity in radians/s
 # updates robot position and heading based on velocity of wheels and the elapsed time
 # the equations are a forward kinematic model of a two-wheeled robot - don't worry just use it
 def simulationstep():
-    global x, y, q
+    global x, y, t
 
     for step in range(
         int(robot_timestep / simulation_timestep)
     ):  # step model time/timestep times
-        v_x = cos(q) * (R * left_wheel_velocity / 2 + R * right_wheel_velocity / 2)
-        v_y = sin(q) * (R * left_wheel_velocity / 2 + R * right_wheel_velocity / 2)
-        omega = (R * right_wheel_velocity - R * left_wheel_velocity) / (2 * L)
+        v_x = cos(t) * (wR * left_wheel_velocity / 2 + wR * right_wheel_velocity / 2)
+        v_y = sin(t) * (wR * left_wheel_velocity / 2 + wR * right_wheel_velocity / 2)
+        omega = (wR * right_wheel_velocity - wR * left_wheel_velocity) / (2 * wL)
 
         x += v_x * simulation_timestep
         y += v_y * simulation_timestep
-        q += omega * simulation_timestep
+        t += omega * simulation_timestep
 
 
 # Simulation loop
 #################
 file = open("trajectory.dat", "w")
 
-for cnt in range(50):
+for cnt in range(5000):
     # 360 degree sensor
+
+    min_laser_distance = (t, 2 * (W + H))
+
     for i in range(360):
         radians = i * pi / 180
         laser_ray = LineString(
             [
                 (x, y),
                 (
-                    x + cos(q + radians) * 2 * (W + H),
-                    (y + sin(q + radians) * 2 * (W + H)),
+                    x + cos(t + radians) * 2 * (W + H),
+                    (y + sin(t + radians) * 2 * (W + H)),
                 ),
             ]
-        )  # a line from robot to a point outside arena in direction of q
+        )  # a line from robot to a point outside arena in direction of t
         ls = world.intersection(laser_ray)
-        if cnt % 50 == 0 and i % 10 == 0:
-            file.write(
-                str(ls.x)
-                + ", "
-                + str(ls.y)
-                + ", "
-                + str(cos(q + radians + pi) * 0.2)
-                + ", "
-                + str(sin(q + radians + pi) * 0.2)
-                + "\n"
-            )
+        dist = sqrt((ls.x - x) ** 2 + (ls.y - y) ** 2)  # distance to wall
+        if dist < min_laser_distance[1]:
+            min_laser_distance = (radians, dist)
+        # if cnt % 50 == 0 and i % 10 == 0:
+        #     file.write(
+        #         str(ls.x)
+        #         + ", "
+        #         + str(ls.y)
+        #         + ", "
+        #         + str(cos(t + radians + pi) * 0.2)
+        #         + ", "
+        #         + str(sin(t + radians + pi) * 0.2)
+        #         + "\n"
+        #     )
 
     # simple single-ray sensor
 
     ray = LineString(
-        [(x, y), (x + cos(q) * 2 * (W + H), (y + sin(q) * 2 * (W + H)))]
-    )  # a line from robot to a point outside arena in direction of q
+        [(x, y), (x + cos(t) * 2 * (W + H), (y + sin(t) * 2 * (W + H)))]
+    )  # a line from robot to a point outside arena in direction of t
 
     s = world.intersection(ray)
     distance = sqrt((s.x - x) ** 2 + (s.y - y) ** 2)  # distance to wall
 
     # simple controller - change direction of wheels every 10 seconds (100*robot_timestep) unless close to wall then turn on spot
-    if distance < 0.5:
+    if min_laser_distance[1] < 0.5:
         left_wheel_velocity = -0.4
         right_wheel_velocity = 0.4
     else:
@@ -101,7 +107,7 @@ for cnt in range(50):
     simulationstep()
 
     # check collision with arena walls
-    if world.distance(Point(x, y)) < L / 2:
+    if world.distance(Point(x, y)) < wL / 2:
         break
 
     if cnt % 50 == 0:
@@ -110,9 +116,9 @@ for cnt in range(50):
             + ", "
             + str(y)
             + ", "
-            + str(cos(q) * 0.2)
+            + str(cos(t) * 0.2)
             + ", "
-            + str(sin(q) * 0.2)
+            + str(sin(t) * 0.2)
             + "\n"
         )
 
