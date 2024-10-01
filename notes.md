@@ -232,6 +232,15 @@ What can improve belief?
 
 
 
-Install pip
-```bash
-wget https://bootstrap.pypa.io/get-pip.py
+- Why is localization important?
+  - To know where the robot is
+  - To know where the robot is going
+  - To know where the robot has been
+
+- What is belief?
+  - The robot's confidence in its position
+
+- How do we prevent errors?
+
+- Exaplain the Particle filtering loop
+
