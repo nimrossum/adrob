@@ -208,3 +208,30 @@ Ask these questions when writing the report
 
 # Lecture 5.1 - Tuesday 24/09/2024
 
+# Lecture 5.2 - Thursday 26/09/2024
+
+# Lecture 6.1 - Tuesday 01/10/2024
+
+Discretized space: The world is divided into cells
+
+Feature based localization: The robot uses features in the world to localize itself
+
+Problem: The environment is not static
+
+**Belief**: Confidence in the robot's position
+
+What can improve belief?
+- Feature extraction
+- More sensors
+
+## Particle filtering
+
+- Monte Carlo
+
+- Random sampling
+
+
+
+Install pip
+```bash
+wget https://bootstrap.pypa.io/get-pip.py
