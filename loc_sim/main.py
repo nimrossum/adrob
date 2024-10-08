@@ -24,7 +24,7 @@ max_lidar_beam_distance = 500
 lidar = LidarSensor(num_beams=60, max_distance_cm=500)
 
 #create landmarkhandler
-landmark_handler = LandmarkHandler()    
+landmark_handler = LandmarkHandler()
 
 # Create ParticleFilterLocalization instance
 particle_filter = ParticleFilterLocalization(num_particles=200, motion_model_stddev=3, environment=env)
@@ -41,6 +41,9 @@ last_time = pygame.time.get_ticks()
 boom_animation = BoomAnimation(width // 2, height // 2)
 showEnd = False
 
+pygame.mixer.init()
+pygame.mixer.music.load("hit.wav")
+
 if __name__ == "__main__":
     # Game loop
     running = True
@@ -48,7 +51,7 @@ if __name__ == "__main__":
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
-        
+
         #calculate timestep
         time_step = (pygame.time.get_ticks() - last_time)/1000
         last_time = pygame.time.get_ticks()
@@ -59,12 +62,12 @@ if __name__ == "__main__":
 
          # Generate Lidar scans - for these exercises, you wil be given these.
         lidar_scans, _intersect_points = lidar.generate_scans(robot_pose, env.get_environment())
-        
+
         #This is what you will use in landmark detection
         landmark_sightings = landmark_handler.find_landmarks(_intersect_points, env.get_environment(), robot_pose)
-      
- 
-        #this is where the particle filtering localisation happens       
+
+
+        #this is where the particle filtering localisation happens
         particle_filter.update(time_step, landmark_sightings, robot.getMotorspeeds())
 
         # this is where we get the estimated position from the particles.
@@ -74,31 +77,32 @@ if __name__ == "__main__":
         mixed_pose = RobotPose((0.1 * robot_pose.x + 0.9 * particle_estimated_pose.x), \
                                (0.1 * robot_pose.y + 0.9 * particle_estimated_pose.y), \
                                (robot_pose.theta))
-                               
+
         #EXERCISE 6.1: make the robot move and navigate the environment based on our current sensor information and our current map.
         robot.explore_environment(lidar_scans)
-        
+
         if USE_VISUALIZATION:
             screen.fill((0, 0, 0))
             env.draw(screen)
             robot.draw(screen)
-            
-            #lidar.draw(robot_pose, _intersect_points, screen)
+
+            # lidar.draw(robot_pose, _intersect_points, screen)
 
             particle_filter.draw(screen, mixed_pose)
-            
-            
-            
-            
+
+
+
+
                # Update the display
             collided = env.checkColision(robot_pose)
             if collided:
                 # Draw the animation
                 boom_animation.draw(screen)
+                pygame.mixer.music.play()
                 ended = boom_animation.update()
                 if ended:
                     pygame.quit()
-                    
+
             pygame.display.flip()
             pygame.display.update()
 
@@ -107,6 +111,6 @@ if __name__ == "__main__":
 
 
 
-   
-  
+
+
 

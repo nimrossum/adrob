@@ -12,7 +12,7 @@ class LidarSensor:
         x = robot_pose.x
         y = robot_pose.y
         theta = robot_pose.theta
-        
+
         # Calculate the starting angle based on the robot's heading
         starting_angle = theta
 
@@ -24,13 +24,13 @@ class LidarSensor:
             # Correct angle considering the starting angle and Pygame coordinate system
             corrected_angle = starting_angle + angle
             x2, y2 = (x + self.max_distance_cm * math.cos(corrected_angle), y + self.max_distance_cm * math.sin(corrected_angle))
-        
+
             # Calculate the end point of the beam
             end_point = Point(x2, y2)
 
             # Create a LineString representing the Lidar beam
             lidar_beam = LineString([(x, y), end_point])
-            
+
             # Check for intersections with obstacles
             intersection = self._check_intersections(lidar_beam, obstacles)
 
@@ -93,7 +93,7 @@ class LidarSensor:
         else:
             return None
 
-        
+
     def draw(self, robot_pose, intersect_points, screen):
         x = robot_pose.x
         y = robot_pose.y
@@ -109,4 +109,14 @@ class LidarSensor:
         endpoint = intersect_points[0]
         pygame.draw.line(screen,(0,255,0),(x,y),(endpoint.x,endpoint.y),2)
 
+        sensor_steps_for_front_array = int((len(intersect_points) / 4) / 3)
+        front_sensor_array = [
+            intersect_points[2 * sensor_steps_for_front_array],
+            intersect_points[sensor_steps_for_front_array],
+            intersect_points[0],
+            intersect_points[len(intersect_points) - sensor_steps_for_front_array],
+            intersect_points[len(intersect_points) - 2 * sensor_steps_for_front_array]
+        ]
+        for endpoint in front_sensor_array:
+            pygame.draw.line(screen,(0,0,255),(x,y),(endpoint.x,endpoint.y),2)
 

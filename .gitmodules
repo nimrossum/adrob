@@ -1,0 +1,3 @@
+[submodule "ar_sim"]
+	path = ar_sim
+	url = git@github.itu.dk:lauh/advanced-robotics-simulation.git
