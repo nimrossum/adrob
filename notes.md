@@ -244,3 +244,25 @@ What can improve belief?
 
 - Exaplain the Particle filtering loop
 
+# Lecture 6.2 - Thursday 03/10/2024
+
+# Lecture 7.1 - Tuesday 08/10/2024
+
+## Belief
+
+- The robot's confidence in its position
+- Represented as a probability distribution
+
+## Prior belief
+
+- Prior is the belief *before* incorporate measurements
+- Posterior is the belief *after* we have incorporated measurements
+
+
+## Kalman gain
+
+- How many times do we need to run it?
+  - Until we have statistical significance
+  - It depends on how confident we want to be
+
+  - We run it until we can say with statistics that it is not caused by randomness
