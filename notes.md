@@ -271,7 +271,7 @@ What can improve belief?
 
 <!-- TODO -->
 
-# Lecture 8.1 - Tuesday 22/10/2024
+# Lecture 9.1 - Tuesday 22/10/2024
 
 ## Problem: Representation of the real world
 
