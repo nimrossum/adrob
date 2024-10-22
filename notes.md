@@ -266,3 +266,119 @@ What can improve belief?
   - It depends on how confident we want to be
 
   - We run it until we can say with statistics that it is not caused by randomness
+
+# Lexture 7.2 - Thursday 10/10/2024
+
+<!-- TODO -->
+
+# Lecture 8.1 - Tuesday 22/10/2024
+
+## Problem: Representation of the real world
+
+## Embodied
+
+- The robot is physically moving in the world
+- The actions that it takes changes what it sees
+
+## Active
+
+- The robot decides where to go and what to perceive
+
+## Situated
+
+- The robot is in a specific place in the world
+
+## Embodied perception
+
+- Studies have shown that manipulating and changing the world in an active manor improves perception
+
+## Proprioceptive
+
+- Looking inwards
+
+## Exteroceptive
+
+- Looking outwards
+
+## Sensors Limitations
+- Error and noise
+- Occlusion
+- Hardware limitation (e.g. subsonic sounds)
+
+- The robot needs to be able to deal with this
+
+## Percepcual classes
+
+- The robot needs to be able to classify what it sees
+- Dark, light instead of raw values
+- An abstraction over the sensing
+
+## Light sensors
+
+- Photoresistor
+  - More light leads to less resistance and vice versa
+  - Very simple $\rightarrow$ very robust
+  - Used in heart rate monitors
+  - A light is shone on the skin and the photoresistor measures
+  - If you shine a different light on it, you can measure the oxygen levels in the blood
+
+![alt text](image.png)
+
+## Analog vs digital
+
+- The analog signal is continuous
+- The digital signal is discrete
+
+## Shaft Encoders
+
+- An proprioceptive sensor that measures the rotation of the wheel
+
+## Distance sensors
+
+- Ultrasonic Distance sensors 🦇
+
+- We know the speed of sound through air
+- We can measure the time it takes for the sound to come back
+- Errors:
+  - Echo, the sound bounces off something else
+  - Temperature, pressure, humidity might affect the speed of sound
+- XBOX Kinect (Infrared laser projector + monochrome CMOS sensor)
+  - Per pixel depth measurement
+  - Was used in robotics for determining where the robot could go
+
+## Cameras
+
+
+## Laser range sensors
+
+- Errors:
+  - At distances, the laser spreads out and the resolution decreases
+
+
+## Navigation sensors
+
+- GPS
+- Beacons (Tile, AirTag)
+- Triangulation
+
+## Gravity
+
+- Accelerometer
+- Gyroscope
+
+
+## Main take away:
+
+- Choice of sensor should be driven by scenario and task of the robot
+
+- Never trust the sensors
+- Test them
+
+
+## How do we select the correct sensor?
+
+Considerations
+- Target: What do we want to measure?
+- Processing: How much data can we handle?
+- Time
+- Keep it simple
