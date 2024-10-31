@@ -1,3 +1,6 @@
 [submodule "ar_sim"]
 	path = ar_sim
 	url = git@github.itu.dk:lauh/advanced-robotics-simulation.git
+[submodule "tennis_ball"]
+	path = tennis_ball
+	url = git@github.itu.dk:rubj/AR_Mandatory3.git
