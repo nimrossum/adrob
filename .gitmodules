@@ -4,3 +4,9 @@
 [submodule "tennis_ball"]
 	path = tennis_ball
 	url = git@github.itu.dk:rubj/AR_Mandatory3.git
+[submodule "ml_sim"]
+	path = ml_sim
+	url = git@github.com:joglr/ml_sim.git
+[submodule "ar_exam"]
+	path = ar_exam
+	url = git@github.com:RubenJonsman/AR_EXAM.git
