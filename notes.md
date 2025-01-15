@@ -25,19 +25,27 @@ More time should be spend on building outside of class hours.
 - The exam is oral where we talk about the project
 - Some questions about the topics covered in the course
 
-## Origin of Robotics
+## Origin of Robots
 
 - Rossum's Universal Robots (1920)
 - Robbie (1939)
 - Runaround (1942)
 
-Asimov's laws of robotics:
+## Asimov's laws of robotics:
 
 1. A robot may not injure a human being or, through inaction, allow a human being to come to harm.
 2. A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.
 3. A robot must project its own existence as long as such protection does not conflict with the First or Second Law.
 
-In most movies, robots are evil. Like the Terminator.
+## Robots in movies
+
+In most movies, robots are evil. Like the Terminator. However, they can also be good, like Wall-E and R2D2.
+
+They are also highly sophisticated.
+
+In reality, robots are not that sophisticated (yet).
+
+They are mostly about automation and making things easier.
 
 ## Robots from the Industrial Revolution
 
@@ -47,23 +55,73 @@ In most movies, robots are evil. Like the Terminator.
 - Mass production (1908)
 - Henry Ford's car factory
 
-First robot introduced at General Motors in 1961.
+## Origin of robots
+
+- First robot introduced at General Motors in 1961.
+
+## Robots in 2005
+
+- A lot of tasks were automated using robots
+- But the **remaining tasks are tough to solve by robots**
+- Existing solutions were very expensive
+  - Robot: 300.000 DKK
+  - System integration: 1.000.000 DKK
+
+This is why Universal Robots was founded.
+
+## Universal Robots - 2005 - Collaborative robot era
+
+- Focus: Low weight, low cost, easy to use
+- This was the start of the **collaborative robot era**
+
+# Artificial brains
+
+- Wiener, Turing, Neumann, McCulloch - The fathers of computer science
+- "You can make computers that can simulate brain functions"
+
+## Shakey - SRI - 1966 - 1972
+
+- First robot to embody artificial intelligence
+
+## Illustrative game (jeg var med)
+
+- The difficulty of coordination between sensors, motors and controller became very apparent
 
 ## Basics
 
 - Make the robot body fit the task as much as possible, then you will need as little intelligence as possible.
 
-## Mobile Robots
+## One limiation of robots
 
-Mobile Industrial Robots Odense - Regnar
-- Was removed because the elderly were scared of the robot
-- Safety issues at Herlev (going around corners)
+- Huge explosion has happened with the development of computers, but not with robots
+- Power consumption is a huge limitation
+- Battery technology has not evolved as much as computers
 
-- The human aspect is very important: How will the robot fit into our world?
+## Examples of advanced robots
+- Mobile Robots: Mobile Industrial Robots (Odense)
+  - Regnar
+  - Was removed because the elderly were scared of the robot
+  - Safety issues at Herlev (going around corners)
+  - The human aspect is very important: **How will the robot fit into our world?**
 
-- Underwater robots does not need to fight gravity, so they can swim around for a long time
+- Lab automation: Flow Robotics A/S (Nord vest København)
 
-- Scarlet Knight was a submarine robot that crossed the pacific ocean from New Jersey to Balona, Spain
+- Underwater robots:
+  - Does not need to fight gravity, so they can swim around for a long time
+  - Scarlet Knight was a submarine robot that crossed the pacific ocean from New Jersey to Balona, Spain
+- In the air
+  - Drones
+- On land
+  - Walking robots
+  - Self driving cars
+- On humans
+  - Prostetics
+- Service robots (Vacuum, mowing, gutter cleaning)
+- Mars rovers
+- Search and rescue
+
+
+
 
 ## Exercises
 
