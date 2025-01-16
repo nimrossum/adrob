@@ -1,0 +1,15 @@
+- I worked primarily with programming the physical robot
+- Project setup (.gitignore, requirements.txt, venv, auto install scripts)
+- Safe-zone detection: I implemented the LED representation in the simulation and made it update based on the detected floor
+- Simplify code by creating all robots using list comprehension
+- Kept track of project goals and whether we fulfilled them
+- Implemented robot detection using computer vision (physical_robot/camera_sensor.py)
+  - I started by continuing from the tennis ball detection that I developed in class
+  - I calibrated the HSV color space to detect blue colors, initially tested with a blue picture on a phone
+  - Then I started calibrating it further using a secondary Thymio robot that showed blue color
+  - This was done using a script, that created a user interface with sliders for each of the 6 values (lower color, upper color)
+  - The values were adjusted until only the contour around the LED was left in the masked frame
+  - I then implemented red detection, by changing the HSV color range if the robot type was an avoider
+  - I also implemented some behavior based control in specific scenarios, due to the limitations of the AvoidModel
+    - Due to the reality gap, we were not able to provide the AvoidModel with the distance to the nearest wall.
+    - Therefore, I implemented a behavior that would make the robot turn around if it was too close to a wall

@@ -1,4 +1,4 @@
-# Lecture 1.1: Introduction to Robotics - Tuesday, 27/08/2024
+# Lecture 1.1 - Tuesday, 27/08/2024 - Introduction to Robotics
 
 Literature:
 -
@@ -440,3 +440,145 @@ Considerations
 - Processing: How much data can we handle?
 - Time
 - Keep it simple
+
+# Lecture 10.1
+
+# Lecture 12.1 - Tuesday 05/11/2024 - Distributed Robotics
+
+## Motivation for distributed robotics
+- Tasks that requires multiple robots:
+  - Strength: Carrying a large piece of timber, one robot is not strong enough
+  - Robustness: If one robot fails, the task can still be completed
+  - Speed: Multiple robots can work in parallel (trash collection)
+  - Efficiency: Multiple robots can work together to solve a task faster
+  - Distributed sensing (e.g. seismic activity, ocean currents) requires multiple robots at different locations
+  - Team can work together
+    - Drone that can fly and a land robot that can be deployed
+
+## Basic Concepts of Distributed Robotics
+Design Goals
+- Scalability: Ability to scale to increasing number of robots
+- Robustness: Resistant to failure
+- Reliability: High probability of solving the task
+- Versatility: Range of different tasks
+- Adaptability: Dynamic environments
+
+## Terms
+
+### Design
+
+- Multi-robot system (Centralized control, social mammals): A group of robots that work together to solve a task
+- Swarm-robot system (Decentralized control, social insects): A group of robots that work together to solve a task inspired by biological swarms
+- Modular-robot system (Cellular robotics): A group of robots that can change their shape and function by reconfiguring themselves
+
+### Control
+
+- Centralized control (precise fireworks display):
+  - One robot is the leader, has overview, single point of failure
+  - Can be robust if leader election has been implemented
+  - Might not scale as well (wifi network overload)
+
+- Decentralized control :
+  - Multiple leaders with local information
+  - Scales better than centralized control
+
+- Distributed control
+  - Robust, no single point of failure
+  - Needs communication network for coordination, a bit tedious
+
+- Homogeneous systems
+  - All robots ate the same
+  - Cheap, mass production
+  - Might not solve diverse tasks
+
+- Heterogeneous systems
+  - Robots have different capabilities
+  - More versatile
+  - More expensive, specialized robots
+  - More complex to build and control
+
+### Communication
+- Point-to-point: Explicit communication between robots
+- Broadcast: WiFi
+- Local: in neighborhood Infrared communication
+- Sensing: Robots can sense each other
+- Stigmergy: Phereomones, breadcrumbs
+
+## Multi-Robotics
+### Intro to Multi-robot systems
+
+- We only consider distributed control with autonomous robots
+- Control single robot + communication for collaboration
+
+- Behavior-based
+- Auction-based algorithms for task allocation
+
+### Case study: ALLIANCE architecture, Robust system
+
+- An architecture for Fault-tolerant multi-robot cooperation?
+- Behavior-based system
+- If one robot starts on task, other robots will avoid starting this task
+
+- Key part: Fancy equation to calculate motivation
+  - If any values are 0, the multiplication will short-circuit to 0 and the robot will not do the task
+  - **Impatience**: If nobody is doing the task, a robot will do that task. It increases over time
+  - **Sensory feedback**: is task needed?
+  - **Activity suppression**: is the robot already doing another task?
+  - **Impatience reset**: if someone is already doing the task
+  - **Acquiescence**: 0 if the robot quits current task
+
+- Very little communication
+
+### Case study: Auction based task allocation
+
+- Pub sub messaging
+- Robots can subscribe to auctions that require certain resources (camera, laser, bumpers, mobile)
+
+## Applications
+- Kiva Systems (bought by Amazon) - Warehouse robots
+  - Dynamic warehouse, worker stays in one place and the robots bring the goods to the worker
+  - Increased efficiency
+  - Centralized system that controls the robots
+  - Line following
+
+## Swarm Robotics
+### Intro to Swarm Robotics
+- Very simple, but able to amazing things
+- Ants: Searching for food efficiently across a vast area
+  - Pheromones disappear over time
+  - Shortest path eventually is the one with the most pheromones
+- Bees: Building a hive
+
+
+### Case study: Swarm-Bots self-assembly task
+
+## Modular Robotics
+### Intro to Modular Robots
+### Moving Modular Robots
+### Self-reconfiguration
+
+# Lecture 11.2 - Thursday 07/11/2024 - Evolutionary Robotics
+
+## Selection mechanisms
+
+Import to balance exploration vs exploitation
+
+- Truncation (use N fittest to generate next generation)
+  - Problem: Might lose diversity
+- Roulette wheel (probability proportional to fitness)
+  - Problem: Extreme scenarios, one individual might dominate or none
+- Rank selection (probability proportional to rank (1,2,..,N))
+  - Better than roulette wheel, as it addresses the problem of extreme scenarios
+- Tournament (fittest of N randomly selected)
+- Steady-state (only replace one individual, not the whole generation)
+
+## Reproduction strategies
+
+Important to not have too much change, as advances might be lost
+
+- Elitism: Fittest N are copied
+- Mutation: Flip or replace a float with random number
+- Crossover: Combine genes from two parents (multipoint, singlepoint)
+  - Take first part of one parent and second part of another parent
+  - Maybe parts of the genes by chance implement a specific behavior and we will have the best of both worlds
+  - If not, it will not perform well and will be discarded
