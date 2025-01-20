@@ -15,8 +15,6 @@ E.g. behavior based robots
 - You can talk about the competition if you use it to explain the effect of some part of the project
   Then talk about the topic
 
-10 min pres
-
 Topic
 
 - Ex: Sensors:

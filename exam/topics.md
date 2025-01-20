@@ -353,7 +353,7 @@ We can use landmarks to localize the robot. Landmarks are objects such as walls,
 
 - Roomba, Undersea, Mars rovers, Self-driving cars
 
-## 8 Distributed robotics
+## 8 Distributed robotics SVARR
 
 - **Distributed robotics** is the study of multiple robots working together to achieve a common goal
 
@@ -364,11 +364,11 @@ We can use landmarks to localize the robot. Landmarks are objects such as walls,
 
 - Design goals
 
-  - Scalability: The system should be scale to increased number of robots
-  - Robustness: Robust to robot/communication failures
-  - Reliability: High probability of solving the task
-  - Versatility: Ability to solve different tasks
-  - Adaptability: Ability to adapt to a dynamic environment
+  - **S**calability: The system should be scale to increased number of robots
+  - **V**ersatility: Ability to solve different tasks
+  - **A**daptability: Ability to adapt to a dynamic environment
+  - **R**obustness: Robust to robot/communication failures
+  - **R**eliability: High probability of solving the task
 
 - Control
 
@@ -599,11 +599,8 @@ Solutions:
 Problems with 1 and 2: Might guide the evolution in the wrong direction, might not be clear how .
 to subdivide the task
 
-
 ### Designing a good fitness function
 
 - As implicit as possible (few constraints) to allow for creativity
 - As internal as possible (measureable by robot) to allow transference to reality
 - As behavioral as possible (not internal mechanisms) to avoid frame of reference problem
-
-
